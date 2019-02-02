@@ -1,0 +1,245 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 絶対に読み込まなければならないスタイル
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 標準のスタイルファイル jbook
+% 11ポイント．奇数，偶数ページ同じデザイン．奇偶数どちらからでも章が始まる．
+\documentclass[11pt,oneside,openany]{jbook} 
+% 図を挿入できるように．dviout拡張を使う(Windows)
+%\usepackage[dviout]{graphicx} 
+\usepackage[dvipdfm]{graphicx} 
+% AMS TeXの記号を利用する(数式記号拡張)
+\usepackage{amsmath,amsthm,amssymb} 
+% キャプションが長い場合に，折り返しをぶら下げにする
+\usepackage[hang]{caption} 
+% 章などの最初の段落の字下げを行う．
+\usepackage{indentfirst} 
+% 脚注をまとめる（E-Sysスタイルファイルで後注に変更）
+\usepackage{endnotes} 
+% ヘッダーとフッターの制御
+\usepackage{fancyhdr}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% お勧めのスタイル．利用しなければつけなくて良い
+%  各自がスタイルファイルを読み込ませたいときは
+%  この部分に追加すること
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% pdfファイルを作成する際に，リンクとしおりを作成．out2uniの場合
+% 最近は dvipdfmxを使うので、この機能はOFFの方が良い
+%\usepackage[dvipdfm, bookmarks=true,bookmarksnumbered=true,bookmarkstype=toc]{hyperref} 
+% pdfファイルを作成するための拡張設定（しおりなどの作成）
+\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
+% 色を使う．pdfを作るときにも関係
+\usepackage[dvipdfm]{color} 
+% pdfファイルを作成するための設定
+\usepackage[%
+dvipdfm,%
+pdfstartview={FitH -32768},%    描画領域の幅に合わせる［default は全体表示］
+bookmarks=true,%                しおり付き［default は false］
+bookmarksnumbered=true,%        章や節の番号をふる［default は false］
+bookmarkstype=toc,%             目次情報のファイル［拡張子 toc］を参照
+colorlinks=false,%              ハイパーリンクを色文字ではなく色枠に［default］
+linkbordercolor={0 1 1},%       link の枠の色 aqua ［default は red {1 0 0}］
+citebordercolor={0 1 0},%       cite の枠の色 lime ［default］
+urlbordercolor={0 0 1},%        url の枠の色 blue ［default］
+%pdftitle={タイトル},%           ［default は空白］
+%pdfsubject={副タイトル},%       ［default は空白］
+%pdfauthor={氏名},%              ［default は空白］
+%pdfkeywords={キーワード}%       ［default は空白］
+]{hyperref}
+% URLの記述が容易となる
+\usepackage{url} 
+% screen 環境が使えるように
+\usepackage{ascmac} 
+% box環境の拡張
+\usepackage{eclbkbox} 
+% 図に(a)(b)(c)と記号を振れるパッケージ
+\usepackage{subcaption}
+% コメントアウトを \begin{comment}コメント\end{comment}で実現
+\usepackage{comment} 
+% レイアウト確認の際に使う
+%\usepackage{layout} 
+% Verbatimの拡張
+\usepackage{fancyvrb} 
+% PSfragを利用する
+%\usepackage[dviout]{psfrag} 
+%\usepackage{psfrag} 
+% EPS の図にラベルを重ねる
+%\usepackage{labelfig}
+% 表内にカラーを用いる
+\usepackage[dviout]{colortbl}
+% フォント
+\usepackage{jtygm}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 絶対に読み込まなければならないスタイル
+%  宮治が作成したり変更，拡張したもの
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% nomenclスタイルの拡張，数式の記号一覧を作成するために使用
+% nomenclスタイルを宮治修正
+\usepackage[refeq,refpage,esys]{esysnomencl}
+% E-Sys用スタイルファイル 宮治作成
+\usepackage{esysthesis}
+% 図・表関係のrefコマンド
+\usepackage{sugarstyle}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ユーザー設定領域
+%  この部分を，自分（達）の情報に修正してください．
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\jtitle{介護現場における技術導入と\\排泄検知システムの開発}{}
+\etitle{Develop Excretion Detection System and Introduce Technology for Care Field}{}
+
+\nendo{2018}
+
+\thesistype{博士論文}
+\belongdept{デザイン科学科}
+\belongcourse{千葉工業大学}
+
+\ebelongdept{The Department of Design}
+\ebelongcourse{Faculty of Creative Engineering, Chiba Institute of Technology}
+
+\authora{横沢（宇井)~吉美}{}{Yoshimi~Yokosawa(Wie)}
+%
+\datestamp{2019}{3}
+%
+\headshorttitle{介護現場における技術導入と排泄検知システムの開発}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 絶対に読み込まなければならないスタイル
+%  順番を他の位置にしないほうが良い．
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% E-Sys用条件定義スタイルファイル 宮治作成
+\usepackage{esyshdr}
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% プリアンブル終了
+% ドキュメント開始（理解していない人は書き換えないように）
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\makeglossary
+\begin{document}
+%
+\input{predoc}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 本文を開始
+% ここから下を各自の設定にあわせて変更
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\input{main/chap_1/1_introduction}
+\input{main/chap_2/2_investigation}
+\input{main/chap_3/3_development}
+\input{main/chap_4/4_share}
+\input{main/chap_5/5_conclusion}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 本文はここまで。カウンタをいったん吐き出す。
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\clearpage
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 脚注（後注）をつける
+%  本文中に脚注(\footnote)をつけなかった場合は，
+%  コメントアウトしてください．
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\listnotesname
+%\addcontentsline{toc}{chapter}{後注}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 参考文献をつける
+%  bibtex のスタイルファイル（bstファイル）には
+%   esysthesis.bst を指定
+%  \bibliographyの引数には参考文献ファイルを指定 
+%  参考文献ファイル（bibファイル）が複数存在する場合には，
+%   WelfareJ,WelfareTのように半角カンマで区切って指定する．
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\bibliographystyle{esysthesis}
+\begin{flushright}
+\bibliography{bib/reference}
+\end{flushright}
+\addcontentsline{toc}{chapter}{参考文献}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 付録環境の設定
+%  付録には，最低でも各自が作成したプログラムやデータの
+%  利用方法に関する解説および研究発表時に指摘された
+%  質疑応答を載せること．
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% この部分は修正してはいけない
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\appendix
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ここから下に付録の内容を書いていくこと
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CD-ROMとして添付するプログラムおよびデータの利用方法
+%  appendix.tex に記述（変更可）
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\input{main/appendix}
+\clearpage
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% その他の付録
+%  その他の付録が有る場合には、以下の部分で
+%  付録ファイル名を指定する
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\input{main/oboegaki}
+%\clearpage
+%\input{main/kinshi}
+%\clearpage
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 質疑応答集
+%  qa.tex 内に所定のフォーマットにて記述すること．
+%  この部分自体は修正しなくて良い
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\input{main/qa}
+%\clearpage
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 研究・発表業績
+%  学外で発表、展示、論文公開などを行った際には、
+%   achievement.tex 内に所定のフォーマットにて記述すること
+%  発表などを行わなかったときには、下記の部分をコメントアウト
+%   すること
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\newpage
+%\addcontentsline{toc}{chapter}{研究業績2}
+%\chapter*{研究業績}
+%
+%\chapter{研究業績}
+%\input{main/achievement}
+%
+%\newpage
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 自己紹介ページ
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\birthday{1988}{9}{8}
+%\hometown{●●●●●}
+%\high_school{高等学校}
+%\nickname{うい}{}{}{}{}{}
+%\comment{■■■}
+%\esysmakepostscript
+
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 本文を終了
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\end{document}
+

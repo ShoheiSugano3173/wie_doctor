@@ -1,0 +1,6 @@
+{
+    "brackets-latex.mainFile": "main.tex",
+    "brackets-latex.texBinDirectory": "C:\\Users\\T460s\\Desktop\\wie_doctor\\dist",
+    "brackets-latex.outputDirectory": "out",
+    "brackets-latex.compiler": "pdflatex"
+}

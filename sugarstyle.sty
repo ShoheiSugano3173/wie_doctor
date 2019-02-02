@@ -1,0 +1,55 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		sugarstyle.sty 								  %
+%													  %
+%		菅野 翔平 （すがっち）				　　　　　	%
+%		Email: mad.hatter.teaparty3173@gmail.com	  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%表示設定
+% 表参照&ラベル   %\label{tbl.??}	
+\newcommand{\refTbl}[1]{\textbf{Table.~\ref{#1}}}
+\newcommand{\refTblJp}[1]{\textbf{表~\ref{#1}}}
+% 式参照&ラベル   %\label{eq.??}
+\newcommand{\refEq}[1]{\textbf{Eq.~(\ref{#1})}}
+\newcommand{\refEqJp}[1]{\textbf{式~(\ref{#1})}}
+% 図参照&ラベル   %\label{fig.??}
+\newcommand{\refFig}[1]{\textbf{Fig.~\ref{#1}}}
+\newcommand{\refFigJp}[1]{\textbf{図~\ref{#1}}}
+% 頁参照&ラベル   %\label{pp.??}
+\newcommand{\refPP}[1]{\textbf{\pageref{#1}}}
+%\cite{?????} --> \begin{thebibliography}{n}  \bibitem{k} ????? \end{thebibliography} %%参考文献
+
+%色
+%color -> {\color{#color} ?????????  }
+\definecolor{olivegreen}{cmyk}{ .64, 0, .95, .40}
+\definecolor{purple}{cmyk}{ .45, .86 , 0, 0}
+
+%mathe
+%\expe{#1}=>e^{#1}
+\newcommand{\expe}[1]{\mathrm{e}^{#1}}
+%\therefore=>∵
+%\newcommand*{\therefore}{∵}
+\renewcommand*{\therefore}{∵}
+%\thus=>∴
+\newcommand{\thus}{∴}
+%\mat{1}{2}{3}{4}=>[1 2; 3 4]
+\newcommand{\mat}[4]{\begin{bmatrix}#1 & #2 \cr #3 & #4 \end{bmatrix}}
+%\mat{1}{2}{3}{4}{5}{6}{7}{8}{9}=>[1 2 3; 4 5 6; 7 8 9]
+\newcommand{\matt}[9]{\begin{bmatrix}#1 & #2 & #3\cr #4 & #5 & #6\cr #7 & #8 & #9 \end{bmatrix}}
+%\deg=>°
+\renewcommand{\deg}{°}
+%\div=>div
+\renewcommand{\div}{\mathrm{div}}
+%\grad=>grad
+\newcommand{\grad}{\mathrm{grad}}
+%\rot=>rot
+\newcommand{\rot}{\mathrm{rot}}
+%\where=>where
+\newcommand{\where}{\mathrm{where}}
+%\dx=>微分記号
+\newcommand{\dx}[3]{ \frac{d^{#3}{#2}}{d{#1}^{#3}} }
+%\px=>偏微分記号
+\newcommand{\px}[3]{ \frac{\partial^{#3} {#2} }{\partial {#1}^{#3}} }
+%\Res=>留数定理
+\newcommand{\Res}[2]{ \mathrm{Res}_{ \hspace{-20pt} \lower5pt\hbox{\footnotesize${#1}={#2}$} }} 
+

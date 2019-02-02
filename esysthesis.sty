@@ -1,0 +1,426 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+% ページレイアウトの設定
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\topmargin}{0mm}
+%\setlength{\headheight}{2mm}
+\setlength{\headheight}{16pt}
+\setlength{\headsep}{18pt}
+\setlength{\footskip}{12mm}
+\setlength{\oddsidemargin}{10mm}
+\setlength{\evensidemargin}{10mm}
+\setlength{\textwidth}{150mm}
+\setlength{\textheight}{230mm}
+%\setlength{\columnsep}{10mm}
+%\setlength{\abovecaptionskip}{0pt}
+%\setlength{\belowcaptionskip}{-3pt}
+\setlength{\abovedisplayskip}{2.5mm} % 数式上部のマージン
+\setlength{\belowdisplayskip}{2.5mm} % 数式下部のマージン
+%\renewcommand\baselinestretch{0.9}
+\renewcommand\baselinestretch{1.2}
+\normalsize\relax
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 文章体裁の設定（フラクションをルーズに設定）
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\textfraction{.001}
+\def\topfraction{.9}
+\def\bottomfraction{.9}
+\def\floatpagefraction{.99}
+\def\dbltopfraction{.999}
+\def\dblbottomfraction{.9999}
+\def\dblfloatpagefraction{.99}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 名称の変更
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\bibname}{参考文献}
+% 英語が良いとき
+%\renewcommand{\figurename}{Fig.}
+%\renewcommand{\tablename}{Table}
+% 日本語が良いとき
+\renewcommand{\figurename}{図}
+\renewcommand{\tablename}{表}
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 脚注の設定
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\let\footnote=\endnote
+\renewcommand{\notesname}{} 
+
+\makeatletter
+\def\@makeenmark{\hbox{\small ${<後注\kern0pt\@theenmark>}$}}
+%\def\@makeenmark{\hbox{$^{<脚注\kern0pt\@theenmark>}$}}
+%\def\enoteformat{\rightskip\z@ \leftskip\z@ \parindent=1.8em
+\def\enoteformat{\rightskip\z@ \leftskip=3.6em \parindent\z@
+     \leavevmode\llap{\hbox{${<後注\@theenmark>~~}$}}}
+     %\leavevmode\llap{\hbox{$^{<脚注\@theenmark>}$}}}
+
+\newcommand{\listnotesname}{%
+  \chapter*{後注}
+\def\enotesize{\normalsize}
+%\def\ennotesize{\large}
+\vspace{-10mm}
+\theendnotes
+}
+\makeatother
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Q and A の設定
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{linenumber}
+\newenvironment{questions}{%
+\begin{list}{%
+	{\bf［質問~\arabic{linenumber}］}}{%
+	\usecounter{linenumber}%
+	\setlength{\baselineskip}{10pt}%
+	\setlength{\itemsep}{10pt}%
+	\setlength{\labelsep}{8pt}%
+	\setlength{\labelwidth}{6zw}%
+%	\setlength{\leftmargin}{\labelwidth}%
+	\setlength{\leftmargin}{3zw}%
+	\advance \labelwidth by -\labelsep%
+	\setlength{\parsep}{10pt}}}%
+{\end{list}}
+
+\def\answer#1{\vspace{-5mm}\item[{\bf［回答~\arabic{linenumber}］}] #1 \\}
+\def\question#1#2{\item #2~~\\{\bf#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% optional definition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bs}{\symbol{'134}}
+\newcommand{\Cmd}[1]{\texttt{\def\{{\char`\{}\def\}{\char`\}}\bs#1}}
+\def\JTeX{\leavevmode\lower .5ex\hbox{J}\kern-.17em\TeX}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Local definition 
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\makeatletter
+\def\jtitle#1#2{%
+	\gdef\@jtitlea{#1}%
+	\gdef\@jtitleb{#2}%
+	}
+\def\etitle#1#2{%
+	\gdef\@etitlea{#1}%
+	\gdef\@etitleb{#2}%
+	}
+	
+\def\nendo#1{\gdef\@nendo{#1}}
+\def\belongdept#1{\gdef\@belongdept{#1}}
+\def\belongcourse#1{\gdef\@belongcourse{#1}}
+\def\ebelongdept#1{\gdef\@ebelongdept{#1}}
+\def\ebelongcourse#1{\gdef\@ebelongcourse{#1}}
+\def\datestamp#1#2{\gdef\@datestamp{#1年~ #2月}}%本元
+%\def\datestamp#1#2#3{\gdef\@datestamp{#1年~ #2月~ #3日}}%すがっち版ゼミレポ作成用(卒論時はココをコメントアウト) Modified by sugacchi 2012, June 21
+\def\thesistype#1{\gdef\@thesistype{#1}}
+\def\headshorttitle#1{\gdef\@headshorttitle{#1}}
+
+\def\author#1#2#3{%
+	\gdef\@jname{#1}%
+	\gdef\@number{#2}%
+	\gdef\@ename{#3}%
+	}
+
+%%
+
+\def\birthday#1#2#3{\gdef\@birthday{#1年~ #2月~ #3日}}
+\def\hometown#1{\gdef\@hometown{#1}}
+\def\high_school#1{\gdef\@high_school{#1}}
+\def\nickname#1#2#3#4#5#6{
+	\gdef\@nicknamea{#1}
+	\gdef\@nicknameb{#2}
+	\gdef\@nicknamec{#3}
+	\gdef\@nicknamed{#4}
+	\gdef\@nicknamee{#5}
+	\gdef\@nicknamef{#6}
+}
+\def\comment#1{\gdef\@comment{#1}}
+
+\def\authora#1#2#3{%
+	\gdef\@jnamea{#1}%
+	\gdef\@stdnuma{#2}%
+	\gdef\@enamea{#3}%
+	}
+\def\authorb#1#2#3{%
+	\gdef\@jnameb{#1}%
+	\gdef\@stdnumb{#2}%
+	\gdef\@enameb{#3}%
+	}
+\def\authorc#1#2#3{%
+	\gdef\@jnamec{#1}%
+	\gdef\@stdnumc{#2}%
+	\gdef\@enamec{#3}%
+	}
+\def\authord#1#2#3{%
+	\gdef\@jnamed{#1}%
+	\gdef\@stdnumd{#2}%
+	\gdef\@enamed{#3}%
+	}
+\makeatother
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Expanded maketitle command
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\makeatletter
+\def\esysmaketitle{%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\@ifundefined{@jnamea}
+	{
+	\gdef\titlecolumnlayout{lll}
+	\gdef\jnames{氏名を記入してください & & }
+	\gdef\tpnames{氏名を記入してください & & }
+	}
+	{
+	\@ifundefined{@jnameb}
+		{
+		\gdef\titlecolumnlayout{lll}
+		\gdef\jnames{\@jnamea}
+		\gdef\tpnames{\@stdnuma & \@jnamea & \@enamea}
+		}
+		{
+		\@ifundefined{@jnamec}
+			{
+			\gdef\titlecolumnlayout{lll}
+			\gdef\jnames{\@jnamea , \@jnameb}
+			\gdef\tpnames{\@stdnuma & \@jnamea & \@enamea \\
+			\@stdnumb & \@jnameb  & \@enameb}
+			}
+			{
+			\@ifundefined{@jnamed}
+				{
+				\gdef\titlecolumnlayout{lll}
+				\gdef\jnames{\@jnamea , \@jnameb, \@jnamec}
+				\gdef\tpnames{\@stdnuma & \@jnamea & \@enamea \\
+				\@stdnumb & \@jnameb  & \@enameb \\
+				\@stdnumc & \@jnamec  & \@enamec}
+
+				}
+				{
+				\gdef\titlecolumnlayout{lll}
+				\gdef\jnames{\@jnamea , \@jnameb}
+				\gdef\tpnames{\@stdnuma & \@jnamea & \@enamea \\
+				\@stdnumb & \@jnameb  & \@enameb \\
+				\@stdnumc & \@jnamec  & \@enamec \\
+				\@stdnumd & \@jnamed  & \@enamed}
+				}
+			}
+		}
+	}
+%\@ifundefined{@jtitleb}
+%	{
+%	\gdef\jtitles{{\LARGE\bf \@jtitlea}\\ \vspace{3mm}{\Large\bf \@jtitleb} }
+%	}
+%	{
+%	\gdef\@jtitlec{　\@jtitleb　}
+%	\gdef\jtitles{{\LARGE\bf \@jtitlea}\\ \vspace{3mm}{\Large\bf \@jtitlec} }
+%	}
+\gdef\@jtitlec{　\@jtitleb　}
+\gdef\jtitles{{\LARGE\bf \@jtitlea}\\ \vspace{3mm}{\Large\bf \@jtitlec} }
+\gdef\@etitlec{　\@etitleb　}
+\gdef\etitles{{\Large\bf \@etitlea}\\ \vspace{3mm}{\large\bf \@etitlec} }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%% 受領印ページ %%%%%%%%%%%%%%%% 
+%% 受領印ページは、pdfファイル化することになったため、入れないことにしました。
+\pagestyle{empty}
+%%\begin{center}
+%%{\Huge 受領印ページ}
+%%\end{center}
+%%\clearpage
+%%\newpage
+%%%%%%%%%%%%%%%% 表紙 %%%%%%%%%%%%%%%% 
+\vspace*{0cm}
+\makeatletter
+\begin{center}
+%%\includegraphics[width=15mm]{agumark.eps}
+%%{\Large \vspace*{2cm} \@nendo 年度 \hspace{0.5cm} \@thesistype} \\
+%\def\ssimb{\includegraphics[width=25mm]{agumark.eps}}
+\def\ssimb{\includegraphics[width=21mm]{CITmark.eps}}
+\vspace*{-15mm}
+\hspace*{-10mm}
+\begin{tabular}{lr}
+\begin{minipage}{25mm} \ssimb \end{minipage}
+& \makebox[0.9\textwidth]{{
+\Large
+\vspace*{2cm} \hspace{20mm} \@nendo 年度 \hspace{0.5cm} \@thesistype \hfill
+ }}
+\end{tabular}
+%%%
+\end{center}
+\vspace{1cm}
+%\vspace{1.5cm}
+\begin{center}
+%{\Large\bf \@jtitlea}\\ \vspace{3mm}
+%{\large\bf \@jtitleb}
+\jtitles
+\\
+\vspace{1cm} 
+%{\Large\bf \@etitlea}\\ \vspace{3mm}
+%{\large\bf \@etitleb}
+\etitles
+\end{center}
+\begin{center}
+%\vspace{2cm}
+\vspace{1.5cm}
+%{\Large \bf  \@number \hspace{0.3cm} \@jname \hspace{0.3cm} \@ename  \\}
+{\Large \bf
+\begin{tabular}{lll}
+\tpnames
+\end{tabular}
+}
+\\
+\vspace{1.5cm}
+%\vspace{2cm}
+\end{center}
+\begin{center}
+{\Large	　　 \  　　 }\\
+\vspace{0.8cm}
+{\Large \@datestamp }\\
+\vspace{1.2cm}
+{\large \@belongcourse ~~\@belongdept \\
+　　} \\
+\vspace{0.3cm}
+{Minakata Laboratory, \@ebelongdept \\
+\@ebelongcourse} \\
+\end{center}
+\makeatother
+\clearpage
+\newpage
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Expanded maketitle command
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\makeatletter
+\def\esysmakepostscript{%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\@ifundefined{@jnamea}
+	{
+	\gdef\titlecolumnlayout{lll}
+	\gdef\jnames{氏名を記入してください & & }
+	\gdef\tpnames{氏名を記入してください & & }
+	}
+	{
+	\@ifundefined{@jnameb}
+		{
+		\gdef\titlecolumnlayout{lll}
+		\gdef\jnames{\@jnamea}
+		\gdef\enames{\@enamea}
+		\gdef\stdnums{\@stdnuma}
+		\gdef\tpnames{\@stdnuma & \@jnamea & \@enamea}
+		}
+		{
+		\@ifundefined{@jnamec}
+			{
+			\gdef\titlecolumnlayout{lll}
+			\gdef\jnames{\@jnamea , \@jnameb}
+			\gdef\tpnames{\@stdnuma & \@jnamea & \@enamea \\
+			\@stdnumb & \@jnameb  & \@enameb}
+			}
+			{
+			\@ifundefined{@jnamed}
+				{
+				\gdef\titlecolumnlayout{lll}
+				\gdef\jnames{\@jnamea , \@jnameb, \@jnamec}
+				\gdef\tpnames{\@stdnuma & \@jnamea & \@enamea \\
+				\@stdnumb & \@jnameb  & \@enameb \\
+				\@stdnumc & \@jnamec  & \@enamec}
+
+				}
+				{
+				\gdef\titlecolumnlayout{lll}
+				\gdef\jnames{\@jnamea , \@jnameb}
+				\gdef\tpnames{\@stdnuma & \@jnamea & \@enamea \\
+				\@stdnumb & \@jnameb  & \@enameb \\
+				\@stdnumc & \@jnamec  & \@enamec \\
+				\@stdnumd & \@jnamed  & \@enamed}
+				}
+			}
+		}
+	}
+%\@ifundefined{@jtitleb}
+%	{
+%	\gdef\jtitles{{\LARGE\bf \@jtitlea}\\ \vspace{3mm}{\Large\bf \@jtitleb} }
+%	}
+%	{
+%	\gdef\@jtitlec{　\@jtitleb　}
+%	\gdef\jtitles{{\LARGE\bf \@jtitlea}\\ \vspace{3mm}{\Large\bf \@jtitlec} }
+%	}
+\gdef\@jtitlec{　\@jtitleb　}
+\gdef\jtitles{{\LARGE\bf \@jtitlea}\\ \vspace{0mm}{\Large\bf \@jtitlec} }
+\gdef\@etitlec{　\@etitleb　}
+\gdef\etitles{{\Large\bf \@etitlea}\\ \vspace{0mm}{\large\bf \@etitlec} }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%% 受領印ページ %%%%%%%%%%%%%%%% 
+%% 受領印ページは、pdfファイル化することになったため、入れないことにしました。
+\pagestyle{empty}
+%%\begin{center}
+%%{\Huge 受領印ページ}
+%%\end{center}
+%%\clearpage
+%%\newpage
+%%%%%%%%%%%%%%%% 表紙 %%%%%%%%%%%%%%%% 
+\makeatother
+
+\noindent
+{\Large
+\@nendo 年度 \@thesistype \\
+~~~~~\@belongcourse ~~\@belongdept \\
+~~~~~\\
+~~~~~\\
+}
+
+\begin{center}
+
+\noindent 
+{\Large\bf 
+\jtitles \\ \vspace{3mm}
+\etitles \\ \vspace{3mm}
+論文著者: \hspace{3mm}  \jnames~~(\enames )~~\stdnums
+}\\ 
+
+\vspace{10mm}
+
+\begin{figure}[h]
+  \begin{center}
+   \includegraphics[%bb=0 0 4272 2848,
+							width=6cm]{fig/me.eps}
+  \end{center}
+\end{figure}
+
+\end{center}
+
+\vspace{10mm}
+
+{\large\bf
+\begin{tabular*}{145mm}{@{\extracolsep{\fill}}  l  p{110mm} }  \hline
+生年月日 　& \@birthday \\
+出身地    　& \@hometown \\
+出身高校   & \@high_school\\
+ニックネーム & \@nicknamea~~\@nicknameb~~\@nicknamec~~\@nicknamed~~\@nicknamee~~\@nicknamef \\
+コメント		& \@comment　\\
+\hline 
+\end{tabular*}
+}
+
+\clearpage
+\newpage
+
+}
+
+\makeatother
+

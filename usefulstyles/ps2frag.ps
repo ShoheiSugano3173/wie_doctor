@@ -1,0 +1,93 @@
+%!PS-Adobe-3.0
+%%Title: ps2frag.ps
+%%
+%% This is file `ps2frag.ps',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% psfrag.dtx  (with options: `psdriver')
+%% 
+%% Copyright (c) 1995 Craig Barratt and Michael C. Grant.
+%% All rights reserved.
+%% 
+%% This file is part of the PSfrag package.
+%% 
+%%EndComments
+/PSfragDict 40 dict def PSfragDict begin
+/DX /dx where { /dx get } { 0 } ifelse def
+/DY /dy where { /dy get } { 0 } ifelse def
+/BD { bind def } bind def /ED { exch def } BD
+/LD { load def } BD
+/STR 16 string def /w /print LD
+/wa { ({) w w (}) w } BD
+/wnum { 1e4 mul round 1e4 div dup dup cvi eq { cvi } if STR cvs w } BD
+/wn { ({) w wnum (}) w } BD
+/wc { (\() w wnum (,) w wnum (\)) w } BD
+/wFrag {
+  str (\\tex) anchorsearch
+  { pop (%PSfragNext) w w (\n%PSfragInfo{}) w }
+  { pop (%PSfragInfo) w str wa } ifelse
+  lly DY add llx DX add wc dxy dxx wc dyy dyx wc
+  rot wn base wn (\n) w
+} BD
+/myCharPath { { ( ) dup 0 3 index put false charpath proc } forall } BD
+/aproc { pop x y rmoveto } BD
+/wproc { c eq { x y rmoveto } if } BD
+/awproc { c eq { x y rmoveto } if x2 y2 rmoveto } BD
+/findbbox {
+  /proc ED /str ED
+  str () ne {
+    gsave currentpoint translate
+    % Step 1.
+    /CTM matrix currentmatrix matrix defaultmatrix
+         matrix invertmatrix matrix concatmatrix def
+    /rot 1 0 currentfont /FontMatrix get dtransform
+         CTM dtransform exch atan def
+    % Step 2.
+    rot 0 ne {
+      /rm rot neg matrix rotate def
+      CTM rm CTM concatmatrix initmatrix concat
+    } if
+    % Step 3.
+    newpath 0 0 moveto str myCharPath flattenpath pathbbox
+    currentpoint /nety ED /netx ED
+    % Step 4.
+    CTM transform 4 2 roll CTM transform
+    /lly ED /llx ED /ury ED /urx ED
+    lly ury gt { /ury lly /lly ury def def } if
+    llx urx gt { /urx llx /llx urx def def } if
+    % Step 5.
+    /base ury lly eq { 0 } { CTM 5 get lly sub ury lly sub div
+                             dup abs add 0.5 mul } ifelse def
+    % Step 6.
+    rot 0 eq { 0 ury lly sub urx llx sub 0 llx lly }{
+      0 ury lly sub rm idtransform
+      urx llx sub 0 rm idtransform
+      llx lly rm itransform
+    } ifelse [/lly /llx /dxy /dxx /dyy /dyx] {ED} forall
+    grestore wFrag
+    % Step 7.
+    netx nety rmoveto
+  } if
+} BD
+end
+/show { PSfragDict begin
+  /pop load findbbox
+end } bind def
+/ashow { PSfragDict begin
+  3 1 roll /y exch def /x exch def
+  /aproc load findbbox
+end } bind def
+/widthshow { PSfragDict begin
+  4 1 roll /c exch def /y exch def /x exch def
+  /wproc load findbbox
+end } bind def
+/awidthshow { PSfragDict begin
+  6 1 roll /y2 exch def /x2 exch def /c exch def /y exch def
+  /x exch def /awproc load findbbox
+} bind def
+/kshow { PSfragDict begin
+  exch findbbox
+end } bind def
+%%EOF

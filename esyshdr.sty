@@ -1,0 +1,136 @@
+\makeatletter
+\@ifundefined{@headshorttitle}
+	{
+	\gdef\htitle{\@jtitlea \\ \vspace{-2mm} \@jtitleb}
+	}
+	{
+	\gdef\htitle{\@headshorttitle}
+	}
+
+\pagestyle{fancy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\@chapappinfancy#1{第 #1 章}  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\@makechapterhead#1{\hbox{}%
+  \vskip2\Cvs
+  {\parindent\z@
+   \raggedright
+   \reset@font\huge\bfseries
+   \ifnum \c@secnumdepth >\m@ne
+     \setlength\@tempdima{\linewidth}%
+     %\setbox\z@\hbox{\@chapapp\thechapter\@chappos\hskip1zw}%
+     %\addtolength\@tempdima{-\wd\z@}%
+     %\unhbox\z@\nobreak
+     %\vtop{\hsize\@tempdima#1}%
+     % CHANGE START
+     \vtop{%
+     \hbox{\@chapapp\ \thechapter\ \@chappos\hskip1zw}%
+     \vbox{\hsize=1zw}%
+     \vtop{\hsize\@tempdima{#1}}%
+     }%
+     % CHANGE END
+   \fi}\vskip3\Cvs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\rfoot{{\footnotesize \@nendo 年度 \@thesistype}\\
+\vspace{-2mm}\hspace{5mm}{\footnotesize \jnames }}
+\rhead{\footnotesize \leftmark ~~~ \thepage}  
+\cfoot{}  
+\lfoot{{\footnotesize \@belongcourse ~\@belongdept}\\
+%\vspace{-2mm}{\footnotesize 長尾 研究室}
+}
+\lhead{{\footnotesize \htitle}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ps@fancy{  
+\let\@mkboth\markboth  
+\@ifundefined{chapter}{\def\sectionmark##1{\markboth  
+{\ifnum \c@secnumdepth>\z@  
+ \thesection\hskip 1em\relax \fi ##1}{}}  
+\def\subsectionmark##1{\markright {\ifnum \c@secnumdepth >\@ne  
+ \thesubsection\hskip 1em\relax \fi ##1}}}  
+{\def\chaptermark##1{\markboth {\ifnum \c@secnumdepth>\m@ne  
+ {\@chapappinfancy{\thechapter}\quad \fi {##1}}}{}}  
+\def\sectionmark##1{}}  
+\ps@@fancy  
+\headwidth\textwidth}  
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\if@in@appendix
+
+\def\appendix{\par  
+\clearpage
+\setcounter{chapter}{0}  
+
+%\setcounter{section}{0}  
+%\@addtoreset{page}{chapter}
+
+%%\pagenumbering{arabic}
+%%%\setcounter{page}{1}
+%%\let\chapters@ve\chapter
+%%\renewcommand\chapter{\setcounter{page}{1}\chapters@ve}
+%%%%\def\chapter{\setcounter{page}{1}\chapters@ve}
+%%%%\let\chapters@ve\chapter
+%%%%\def\chapter{\refstepcounter{page}\chapters@ve}
+
+\def\@chapapp##1{付録 ##1} 
+\def\@chappos{} 
+\def\thechapter{\Alph{chapter}}  
+%%
+\def\@chapappinfancy##1{付録 \hbox{\bf ##1}}  
+\def\thepage{\alph{chapter}\arabic{page}}
+
+\rfoot{{\footnotesize \@nendo 年度 \@thesistype}\\
+\vspace{-2mm}\hspace{5mm}{\footnotesize \jnames }}
+\rhead{\footnotesize \leftmark ~~~ \alph{chapter}\arabic{page}}
+\cfoot{}  
+\lfoot{{\footnotesize \@belongcourse \@belongdept}\\
+%\vspace{-2mm}{\footnotesize 長尾 研究室}
+}
+%%
+\@in@appendixtrue}
+%%%%
+%%%%
+%\newcommand{\chapter}{%
+\def\chapter{%
+%\renewcommand{\chapter}{%
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \if@in@appendix\setcounter{page}{1}\fi
+  \thispagestyle{jpl@in}%
+  \global\@topnum\z@
+  \@afterindentfalse
+  \secdef\@chapter\@schapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+\renewenvironment{thebibliography}[1] 
+{\chapter*{\bibname}\@mkboth{\bibname}{\bibname}% 
+%% 修正 \@mkboth を \chapter* の引数の外に出しただけ 
+   \list{\@biblabel{\@arabic\c@enumiv}}% 
+        {\settowidth\labelwidth{\@biblabel{#1}}% 
+         \leftmargin\labelwidth 
+         \advance\leftmargin\labelsep 
+         \@openbib@code 
+         \usecounter{enumiv}% 
+         \let\p@enumiv\@empty 
+         \renewcommand\theenumiv{\@arabic\c@enumiv}}% 
+   \sloppy 
+   \clubpenalty4000 
+   \@clubpenalty\clubpenalty 
+   \widowpenalty4000% 
+   \sfcode`\.\@m} 
+  {\def\@noitemerr 
+    {\@latex@warning{Empty `thebibliography' environment}}% 
+   \endlist}
+\makeatother
+\renewcommand{\footrulewidth}{0.6pt}
+
+
+
+
+
+
+
+

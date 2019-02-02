@@ -1,0 +1,45 @@
+\section{ファイル解説}
+E-Sys用 \LaTeX2e 論文作成マクロ・ファイル集は，Table~\ref{table:filelist}に示すファイルから構成される．これらのマクロ・ファイルの適切な箇所を変更すると，論文の本文以外の部分が自動的に生成される．
+
+\begin{table}[t]
+\begin{center}
+\caption{File and macro list for thesis making used in Our E-Sys labratory. Far right column shows the necessity for change of the file. A round mark (○) means that the file must be changed. A cross mark (×) means that the file must not be changed.}
+
+%\vspace{3mm}
+\begin{tabular}{l|l|c}\hline
+%Filename & Explanation of file & Necessity for change \\\hline\hline
+\multicolumn{1}{c|}{Filename} & \multicolumn{1}{c|}{Explanation of file} & \multicolumn{1}{c}{Necessity for change}\\ \hline\hline\hline
+main.tex & The file which becomes main & ○ \\\hline
+predoc.tex & A cover, acknowledgement, TOC, etc. & ×\\ 
+ & ~~~are constituted &  \\\hline
+esysthesis.sty & Style(Macro) file  & × \\\hline
+esyshdr.sty & Style(Macro) file & × \\\hline
+agumark.eps & The picture file of AGU mark & × \\\hline
+esysthesis.bst & BibTeX Style File & × \\\hline
+esysnomencl.ist & Symbol List Setting File & × \\\hline
+esysnomencl.sty & Symbol List Style(Macro) File & × \\\hline\hline
+
+masterzyuryouin.tex & The file for receipt stamp page file & ○ \\
+ & ~~~of Master Thesis &  \\\hline
+seniorzyuryouin.tex & The file for receipt stamp page file & ○\\
+ & ~~~of Graduate Thesis &  \\\hline\hline
+
+abstract.tex & Thesis summary is discrived in English & ○ \\\hline
+achievement.tex & Achievements are discrived & ○ \\\hline
+program.tex & Appendix: &  ○ \\
+ & Programs and data are explained &  \\\hline
+qa.tex & Appendix: & ○ \\
+ & Questions and answers are described &  \\\hline
+thanks.tex & Acknowledgement is filled in & ○ \\\hline
+youshi.tex & Thesis summary is discrived in Japansese & ○ \\\hline\hline
+
+Makefile & Procedure utilized by the make command & ○ \\
+ & ~~~is described &  \\\hline\hline
+ 
+eclbkbox.sty & This file may not exist & × \\\hline
+fancyvrb.sty & This file may not exist & × \\\hline\hline
+\end{tabular} 
+\label{table:filelist}
+\end{center}
+\end{table}
+

@@ -1,0 +1,58 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% タイトルページコマンド起動
+%  受領印ページと表紙から構成
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\esysmaketitle
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 本文前のページ設定
+%  論文要旨は youshi.tex，ABSTRACTは abstract.tex，
+%  謝辞は thanks.tex に記述すること
+%  anstract.tex 内は所定のフォーマットにて記述すること
+%  ゼミレポ作成は全てコメントアウト卒論作成時に戻す     %%%%modified by sugacchi 2012. June 21
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\pagenumbering{roman}%ココはコメントアウトしない
+%
+%%%%%%%%modified by sugacchi 2012. June 21
+%
+\chapter*{謝辞}
+\addcontentsline{toc}{chapter}{謝辞}
+\input{main/thanks}
+\clearpage
+\chapter*{論文要旨}
+\addcontentsline{toc}{chapter}{論文要旨}
+\input{main/youshi}
+\clearpage
+\chapter*{ABSTRACT}
+\addcontentsline{toc}{chapter}{ABSTRACT}
+\setlength{\parindent}{7ex}
+\input{main/abstract}
+\setlength{\parindent}{1em}
+\clearpage
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 目次ページ設定
+% 目次，図目次，表目次，記号一覧
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\tableofcontents
+\addcontentsline{toc}{chapter}{目次}
+\clearpage
+
+\listoffigures
+\addcontentsline{toc}{chapter}{図目次}
+\clearpage
+
+\listoftables
+\addcontentsline{toc}{chapter}{表目次}
+\clearpage
+
+\printglossary
+\addcontentsline{toc}{chapter}{記号一覧}
+\clearpage
+
+\pagebreak
+\pagenumbering{arabic}
+\pagestyle{fancy}

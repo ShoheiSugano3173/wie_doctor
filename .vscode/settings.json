@@ -1,0 +1,7 @@
+{
+    "files.autoGuessEncoding": false,
+    "[tex]":{
+    "files.encoding": "shiftjis"
+    },
+    "editor.renderWhitespace": "boundary"
+}
