@@ -353,7 +353,7 @@ FUNCTION {format.names}
 %% modified by uta --begin--
 %   { nameptr #1 >  
 %        { s nameptr "{f.~}{vv~}{ll}{, jj}" format.name$ 't :=  } %‚Ql–ÚˆÈ~‚Ì‚Æ‚«‚Ìo—Í
-%        { s nameptr "{vv~}{ll}{, jj}{, f.}" format.name$ 't :=} %‚Pl–Ú‚Ìo—Í
+%        { s nameptr "{vv~}{ll}{, jj}{, f.}" format.name$ 't :=} %1l–Ú‚Ìo—Í
 %      if$}
 %%%% 2012.06.21-begin modified by sugano
    { nameptr #1 >
