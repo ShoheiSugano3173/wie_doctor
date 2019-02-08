@@ -24,7 +24,7 @@
 %  この部分に追加すること
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % pdfファイルを作成する際に，リンクとしおりを作成．out2uniの場合
-% 最近は dvipdfmxを使うので、この機能はOFFの方が良い
+% 最近は dvipdfmxを使うので，この機能はOFFの方が良い
 %\usepackage[dvipdfm, bookmarks=true,bookmarksnumbered=true,bookmarkstype=toc]{hyperref} 
 % pdfファイルを作成するための拡張設定（しおりなどの作成）
 \AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
@@ -69,6 +69,8 @@ urlbordercolor={0 0 1},%        url の枠の色 blue ［default］
 \usepackage[dviout]{colortbl}
 % フォント
 \usepackage{jtygm}
+% 図の強制挿入
+\usepackage{here}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 絶対に読み込まなければならないスタイル
@@ -87,23 +89,23 @@ urlbordercolor={0 0 1},%        url の枠の色 blue ［default］
 %  この部分を，自分（達）の情報に修正してください．
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\jtitle{介護現場における技術導入と\\排泄検知システムの開発}{}
-\etitle{Develop Excretion Detection System and Introduce Technology for Care Field}{}
+\jtitle{介護現場における技術導入と\\排泄検知システムの開発と展望}{}
+\etitle{Develop Excretion Detection System and Prospect for Technology Introduction in Nursing Care Field}{}
 
 \nendo{2018}
 
 \thesistype{博士論文}
-\belongdept{デザイン科学科}
-\belongcourse{千葉工業大学}
+\belongdept{工学研究科 工学専攻}
+\belongcourse{千葉工業大学 大学院}
 
-\ebelongdept{The Department of Design}
-\ebelongcourse{Faculty of Creative Engineering, Chiba Institute of Technology}
+\ebelongdept{Graduate School of Engineering, Engineering major}
+\ebelongcourse{Chiba Institute of Technology}
 
-\authora{横沢（宇井)~吉美}{}{Yoshimi~Yokosawa(Wie)}
+\authora{横沢（宇井)~吉美}{}{Yoshimi~Yokosawa(Ui)}
 %
 \datestamp{2019}{3}
 %
-\headshorttitle{介護現場における技術導入と排泄検知システムの開発}
+\headshorttitle{介護現場における技術導入と排泄検知システムの開発と展望}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 絶対に読み込まなければならないスタイル
@@ -134,7 +136,7 @@ urlbordercolor={0 0 1},%        url の枠の色 blue ［default］
 \input{main/chap_5/5_conclusion}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 本文はここまで。カウンタをいったん吐き出す。
+% 本文はここまで．カウンタをいったん吐き出す．
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \clearpage
@@ -158,9 +160,11 @@ urlbordercolor={0 0 1},%        url の枠の色 blue ［default］
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \bibliographystyle{esysthesis}
-\begin{flushright}
-\bibliography{bib/reference}
-\end{flushright}
+%\begin{flushright}
+\begin{flushleft}
+    \bibliography{bib/reference}
+\end{flushleft}
+%\end{flushright}
 \addcontentsline{toc}{chapter}{参考文献}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -190,7 +194,7 @@ urlbordercolor={0 0 1},%        url の枠の色 blue ［default］
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % その他の付録
-%  その他の付録が有る場合には、以下の部分で
+%  その他の付録が有る場合には，以下の部分で
 %  付録ファイル名を指定する
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -210,9 +214,9 @@ urlbordercolor={0 0 1},%        url の枠の色 blue ［default］
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 研究・発表業績
-%  学外で発表、展示、論文公開などを行った際には、
+%  学外で発表，展示，論文公開などを行った際には，
 %   achievement.tex 内に所定のフォーマットにて記述すること
-%  発表などを行わなかったときには、下記の部分をコメントアウト
+%  発表などを行わなかったときには，下記の部分をコメントアウト
 %   すること
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
